@@ -8,7 +8,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class RemoteUtil {
@@ -47,4 +46,5 @@ public class RemoteUtil {
 
         return responseContent;
     }
+
 }
