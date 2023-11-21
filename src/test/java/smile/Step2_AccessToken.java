@@ -29,11 +29,14 @@ public class Step2_AccessToken extends BaseTest {
         System.out.println("=====> step2 : Create Access Token");
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
+        System.out.println("timestamp = " + timestamp);
         String clientKey = merchantId;
 
         String stringToSign = clientKey + "|" + timestamp;
+        System.out.println("stringToSign = " + stringToSign);
+        System.out.println("privateKeyStr = " + privateKeyStr);
         String signature = SignatureUtil.createSignature(stringToSign, privateKeyStr);
-
+        System.out.println("signature = " + signature);
 
         String url = BASE_URL + ACCESS_TOKEN_API;
 
