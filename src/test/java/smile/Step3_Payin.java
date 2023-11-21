@@ -29,8 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9" +
-            ".eyJuYmYiOjE3MDA1NDg5NzUsImV4cCI6MTcwMDU0OTg3NSwiaWF0IjoxNzAwNTQ4OTc1LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ._m06hivHyGo5p7OaQcw1vX8jFbwV33vmpLQO0vwZLqo";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NTA1NzAsImV4cCI6MTcwMDU1MTQ3MCwiaWF0IjoxNzAwNTUwNTcwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.LKP5DH0n0Zy2lcUICnhGgAnHRIlK68YPSF94lJ-CbtI";
 
 
     @Test
@@ -38,7 +37,8 @@ public class Step3_Payin extends BaseTest {
         System.out.println("=====> step3 : Payin transaction");
 
         //url
-        String url = SmileConstant.BASE_URL + SmileConstant.PAY_IN_API;
+        String endPointUlr = SmileConstant.PAY_IN_API;
+        String url = SmileConstant.BASE_URL + endPointUlr;
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
@@ -46,7 +46,7 @@ public class Step3_Payin extends BaseTest {
 
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
-        String purpose = "purpose for buy mac";
+        String purpose = "Purpose For Transaction";
         String paymentMethod = "BCA";
 
         //moneyReq
@@ -135,8 +135,7 @@ public class Step3_Payin extends BaseTest {
         String lowerCase = byte2Hex.toLowerCase();
 
         //build
-        String stringToSign =
-                "POST" + ":" + SmileConstant.PAY_IN_API + ":" + ACCESS_TOKEN + ":" + lowerCase + ":" + timestamp;
+        String stringToSign = "POST" + ":" + endPointUlr + ":" + ACCESS_TOKEN + ":" + lowerCase + ":" + timestamp;
 
         //signature
         String signature = SignatureUtil.hmacSHA512(stringToSign, SmileConstant.MERCHANT_SECRET);
@@ -158,22 +157,16 @@ public class Step3_Payin extends BaseTest {
         // set entity
         httpPost.setEntity(new StringEntity(jsonStr, StandardCharsets.UTF_8));
 
-        String responseContent = null;
-        try {
-            // send
-            HttpResponse response = httpClient.execute(httpPost);
+        // send
+        HttpResponse response = httpClient.execute(httpPost);
 
-            // response
-            HttpEntity httpEntity = response.getEntity();
-            responseContent = EntityUtils.toString(httpEntity, "UTF-8");
-            System.out.println("responseContent = " + responseContent);
+        // response
+        HttpEntity httpEntity = response.getEntity();
+        String responseContent = EntityUtils.toString(httpEntity, "UTF-8");
+        System.out.println("responseContent = " + responseContent);
 
-            // release
-            EntityUtils.consume(httpEntity);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        // release
+        EntityUtils.consume(httpEntity);
     }
 
 }

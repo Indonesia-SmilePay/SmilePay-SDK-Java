@@ -44,6 +44,6 @@ public class Step2_AccessToken extends BaseTest {
         System.out.println("response = " + response);
     }
 
-    //{"responseCode":"2007300","responseMessage":"Successful","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-    // .eyJuYmYiOjE3MDA1NDg5NzUsImV4cCI6MTcwMDU0OTg3NSwiaWF0IjoxNzAwNTQ4OTc1LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ._m06hivHyGo5p7OaQcw1vX8jFbwV33vmpLQO0vwZLqo","tokenType":"Bearer","expiresIn":"900","additionalInfo":null}
+    //response = {"responseCode":"2007300","responseMessage":"Successful","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NTA1NzAsImV4cCI6MTcwMDU1MTQ3MCwiaWF0IjoxNzAwNTUwNTcwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.LKP5DH0n0Zy2lcUICnhGgAnHRIlK68YPSF94lJ-CbtI","tokenType":"Bearer","expiresIn":"900","additionalInfo":null}
+
 }

@@ -51,6 +51,12 @@ public class SmileConstant {
      */
     public static final String PAY_IN_API = "/v1.0/transaction/pay-in";
 
+    /**
+     * Payout_API.
+     * From docs API
+     */
+    public static final String PAY_OUT_API = "/v1.0/disbursement/cash-out";
+
 }
 
 
