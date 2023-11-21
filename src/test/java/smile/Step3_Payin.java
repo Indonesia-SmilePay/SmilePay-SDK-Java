@@ -29,7 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NTA1NzAsImV4cCI6MTcwMDU1MTQ3MCwiaWF0IjoxNzAwNTUwNTcwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.LKP5DH0n0Zy2lcUICnhGgAnHRIlK68YPSF94lJ-CbtI";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NjE0ODAsImV4cCI6MTcwMDU2MjM4MCwiaWF0IjoxNzAwNTYxNDgwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.4_dyA_yOI_ZKW9HLav3uyV1hElDNAgpn8m_PbbArIUA";
 
 
     @Test
@@ -46,7 +46,7 @@ public class Step3_Payin extends BaseTest {
 
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
-        String purpose = "Purpose For Transaction";
+        String purpose = "Purpose For Transaction from Java SDK";
         String paymentMethod = "BCA";
 
         //moneyReq
