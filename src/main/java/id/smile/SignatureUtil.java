@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.util.Base64;
 
 /**
  * Function: SHA256withRSA utility class
@@ -32,7 +33,7 @@ public class SignatureUtil {
      */
     public static String createSignature(String stringToSign, String privateKeyStr) {
         try {
-            byte[] privateKeys = java.util.Base64.getDecoder().decode(privateKeyStr.getBytes());
+            byte[] privateKeys = Base64.getDecoder().decode(privateKeyStr.getBytes());
             PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateKeys);
             KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
             PrivateKey privateKey = keyFactory.generatePrivate(privateKeySpec);
@@ -41,7 +42,7 @@ public class SignatureUtil {
             signature.initSign(privateKey);
             signature.update(stringToSign.getBytes(StandardCharsets.UTF_8));
             byte[] signed = signature.sign();
-            return java.util.Base64.getEncoder().encodeToString(signed);
+            return Base64.getEncoder().encodeToString(signed);
         } catch (Exception e) {
             e.printStackTrace();
         }
