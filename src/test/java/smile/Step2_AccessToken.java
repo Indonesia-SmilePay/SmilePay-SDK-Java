@@ -1,10 +1,12 @@
 package smile;
 
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import id.smile.RemoteUtil;
 import id.smile.SignatureUtil;
 import id.smile.SmileConstant;
+import id.smile.res.AccessTokenRes;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -32,16 +34,23 @@ public class Step2_AccessToken extends BaseTest {
         System.out.println("signature = " + signature);
 
         //url
-        String url = SmileConstant.BASE_URL + SmileConstant.ACCESS_TOKEN_API;
+        String url = SmileConstant.BASE_SANDBOX_URL + SmileConstant.ACCESS_TOKEN_API;
 
         //body
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("grantType", "client_credentials");
         String jsonBody = jsonObject.toString();
 
-        //psot
+        //post
         String response = RemoteUtil.postJson(url, timestamp, clientKey, signature, jsonBody);
         System.out.println("response = " + response);
+
+        //build res
+        Gson gson = new Gson();
+        AccessTokenRes res = gson.fromJson(response, AccessTokenRes.class);
+        System.out.println("res token = " + res.getAccessToken());
+
+        System.out.println("Please remember the token, use this token for all subsequent api calls.");
     }
 
     //response = {"responseCode":"2007300","responseMessage":"Successful","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NTA1NzAsImV4cCI6MTcwMDU1MTQ3MCwiaWF0IjoxNzAwNTUwNTcwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.LKP5DH0n0Zy2lcUICnhGgAnHRIlK68YPSF94lJ-CbtI","tokenType":"Bearer","expiresIn":"900","additionalInfo":null}

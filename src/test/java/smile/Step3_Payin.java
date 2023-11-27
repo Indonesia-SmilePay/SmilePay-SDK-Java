@@ -29,7 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NjE0ODAsImV4cCI6MTcwMDU2MjM4MCwiaWF0IjoxNzAwNTYxNDgwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.4_dyA_yOI_ZKW9HLav3uyV1hElDNAgpn8m_PbbArIUA";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDEwNjQyMTksImV4cCI6MTcwMTA2NTExOSwiaWF0IjoxNzAxMDY0MjE5LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDEifQ.D4XIdXPFeM0JKPtrfv7SufdLpKvxZl4eWQKgqzjIkxA";
 
 
     @Test
@@ -38,7 +38,7 @@ public class Step3_Payin extends BaseTest {
 
         //url
         String endPointUlr = SmileConstant.PAY_IN_API;
-        String url = SmileConstant.BASE_URL + endPointUlr;
+        String url = SmileConstant.BASE_SANDBOX_URL + endPointUlr;
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
@@ -167,6 +167,8 @@ public class Step3_Payin extends BaseTest {
 
         // release
         EntityUtils.consume(httpEntity);
+
+        System.out.println("The pay interface is completed, and you can get your payment link");
     }
 
 }

@@ -28,7 +28,7 @@ import java.util.Collections;
 public class Step4_Payout extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NTE1MTMsImV4cCI6MTcwMDU1MjQxMywiaWF0IjoxNzAwNTUxNTEzLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.pczQvIbo_l3c3vLawUPgAnWF7wPsytN08xm-oDdLT1U";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDEwNjQyMTksImV4cCI6MTcwMTA2NTExOSwiaWF0IjoxNzAxMDY0MjE5LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDEifQ.D4XIdXPFeM0JKPtrfv7SufdLpKvxZl4eWQKgqzjIkxA";
 
     @Test
     public void payout() throws Exception {
@@ -36,7 +36,7 @@ public class Step4_Payout extends BaseTest {
 
         //url
         String endPointUlr = SmileConstant.PAY_OUT_API;
-        String url = SmileConstant.BASE_URL + endPointUlr;
+        String url = SmileConstant.BASE_SANDBOX_URL + endPointUlr;
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
