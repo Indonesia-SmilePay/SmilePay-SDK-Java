@@ -34,7 +34,7 @@ public class Step2_AccessToken extends BaseTest {
         System.out.println("signature = " + signature);
 
         //url
-        String url = SmileConstant.BASE_SANDBOX_URL + SmileConstant.ACCESS_TOKEN_API;
+        String url = SmileConstant.BASE_URL + SmileConstant.ACCESS_TOKEN_API;
 
         //body
         JsonObject jsonObject = new JsonObject();

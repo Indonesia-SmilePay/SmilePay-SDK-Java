@@ -29,7 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDEwNjQyMTksImV4cCI6MTcwMTA2NTExOSwiaWF0IjoxNzAxMDY0MjE5LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDEifQ.D4XIdXPFeM0JKPtrfv7SufdLpKvxZl4eWQKgqzjIkxA";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDM4NDM3NjYsImV4cCI6MTcwMzg0NDY2NiwiaWF0IjoxNzAzODQzNzY2LCJNRVJDSEFOVF9JRCI6IjIwMDAxIn0.le1Uedm8Sh7XFET4OAakYKNX3o-YqhFApgtN2Vuumzo";
 
 
     @Test
@@ -38,7 +38,7 @@ public class Step3_Payin extends BaseTest {
 
         //url
         String endPointUlr = SmileConstant.PAY_IN_API;
-        String url = SmileConstant.BASE_SANDBOX_URL + endPointUlr;
+        String url = SmileConstant.BASE_URL + endPointUlr;
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
@@ -47,7 +47,7 @@ public class Step3_Payin extends BaseTest {
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
         String purpose = "Purpose For Transaction from Java SDK";
-        String paymentMethod = "BCA";
+        String paymentMethod = "W_DANA";
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
