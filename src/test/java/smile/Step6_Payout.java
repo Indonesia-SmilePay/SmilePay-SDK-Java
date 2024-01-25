@@ -25,14 +25,14 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 
-public class Step4_Payout extends BaseTest {
+public class Step6_Payout extends BaseTest {
 
     //accessToken.  from step2
     private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDEwNjQyMTksImV4cCI6MTcwMTA2NTExOSwiaWF0IjoxNzAxMDY0MjE5LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDEifQ.D4XIdXPFeM0JKPtrfv7SufdLpKvxZl4eWQKgqzjIkxA";
 
     @Test
     public void payout() throws Exception {
-        System.out.println("=====> step4 : Payout Disbursement");
+        System.out.println("=====> step6 : Payout Disbursement");
 
         //url
         String endPointUlr = SmileConstant.PAY_OUT_API;
