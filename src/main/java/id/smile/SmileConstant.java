@@ -91,6 +91,11 @@ public class SmileConstant {
     public static final String INQUIRY_STATUS_API = "/v1.0/inquiryStatus";
     public static final String INQUIRY_STATUS_NEW_API = "/v1.0/inquiry-status";
 
+    /**
+     * QRIS_SC_API
+     */
+    public static final String QRIS_SC_API = "/v1.0/qris-sc";
+
 }
 
 

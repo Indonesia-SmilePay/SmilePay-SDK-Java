@@ -31,7 +31,7 @@ public class Step6_Payout extends BaseTest {
     private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDEwNjQyMTksImV4cCI6MTcwMTA2NTExOSwiaWF0IjoxNzAxMDY0MjE5LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDEifQ.D4XIdXPFeM0JKPtrfv7SufdLpKvxZl4eWQKgqzjIkxA";
 
     @Test
-    public void payout() throws Exception {
+    public void step6_payout() throws Exception {
         System.out.println("=====> step6 : Payout Disbursement");
 
         //url

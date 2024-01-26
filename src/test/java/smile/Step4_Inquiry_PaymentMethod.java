@@ -24,7 +24,7 @@ public class Step4_Inquiry_PaymentMethod extends BaseTest {
     private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYxNzg3OTAsImV4cCI6MTcwNjE3OTY5MCwiaWF0IjoxNzA2MTc4NzkwLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.SN68fFTnPrOv4IVQc_zWmC7bO1OITc8HRhkQC0_1x2A";
 
     @Test
-    public void payout_paymentMethodList() throws Exception {
+    public void step4_inquiry_paymentmethod() throws Exception {
 
         System.out.println("=====> step4 : Payout Step4_Inquiry_PaymentMethod");
 

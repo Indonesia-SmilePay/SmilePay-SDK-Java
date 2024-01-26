@@ -3,9 +3,9 @@ package smile;
 import com.google.gson.Gson;
 import id.smile.SignatureUtil;
 import id.smile.SmileConstant;
-import id.smile.req.InquiryAccountReq;
-import id.smile.req.InquiryPaymentMethodReq;
+import id.smile.req.InquiryStatusReq;
 import id.smile.req.MerchantReq;
+import id.smile.req.QrisScReq;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -19,18 +19,18 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
-public class Step5_Inquiry_account extends BaseTest {
+public class Step_qris_sc extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYxNzg3OTAsImV4cCI6MTcwNjE3OTY5MCwiaWF0IjoxNzA2MTc4NzkwLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.SN68fFTnPrOv4IVQc_zWmC7bO1OITc8HRhkQC0_1x2A";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYyNTU2MTEsImV4cCI6MTcwNjI1NjUxMSwiaWF0IjoxNzA2MjU1NjExLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.gi0kpap7vcoipTvmUONBUzstP090WBdHEZvyROAUB8Q";
 
     @Test
-    public void step5_inquiry_account() throws Exception {
+    public void step_qris_sc() throws Exception {
 
-        System.out.println("=====> step5 : Payout Step5_Inquiry_account");
+        System.out.println("=====> step : Step_qris_sc");
 
         //url
-        String endPointUlr = SmileConstant.PAY_OUT_INQUIRY_ACCOUNT_API;
+        String endPointUlr = SmileConstant.QRIS_SC_API;
         String url = SmileConstant.BASE_URL + endPointUlr;
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
@@ -38,18 +38,19 @@ public class Step5_Inquiry_account extends BaseTest {
         String partnerId = SmileConstant.MERCHANT_ID;
 
         //generate parameter
-        InquiryAccountReq accountReq = new InquiryAccountReq();
         MerchantReq merchantReq = new MerchantReq();
         merchantReq.setMerchantId(partnerId);
-        merchantReq.setMerchantName("sandbox test");
-        accountReq.setMerchant(merchantReq);
-        accountReq.setPaymentMethod("BCA");
-        accountReq.setAccountNo("4070307681");
-        //accountReq.setHolderName("Jeffrey");
+        merchantReq.setMerchantName("Java SDK Test");
+
+        QrisScReq qrisScReq = new QrisScReq();
+        qrisScReq.setMerchant(merchantReq);
+        qrisScReq.setShopName("shop_name_xxxx");
+        qrisScReq.setWhatsAppNotification("821874385435");
+        qrisScReq.setAdditionalInfo("add");
 
         //jsonStr by gson
         Gson gson = new Gson();
-        String jsonStr = gson.toJson(accountReq);
+        String jsonStr = gson.toJson(qrisScReq);
         System.out.println("jsonStr = " + jsonStr);
 
         //minify

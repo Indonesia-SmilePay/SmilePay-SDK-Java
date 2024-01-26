@@ -27,7 +27,7 @@ public class Step_Inquiry_balance extends BaseTest {
     private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYxODMxNDEsImV4cCI6MTcwNjE4NDA0MSwiaWF0IjoxNzA2MTgzMTQxLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.6hyHi8xBPI0t-onFBJIWmJCkfbhnkqaQTxLa-H3jJyI";
 
     @Test
-    public void payout_paymentMethodList() throws Exception {
+    public void step_inquiry_balance() throws Exception {
 
         System.out.println("=====> step : Step_Inquiry_balance");
 

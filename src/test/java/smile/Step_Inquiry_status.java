@@ -25,9 +25,9 @@ public class Step_Inquiry_status extends BaseTest {
     private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYxODQxMDYsImV4cCI6MTcwNjE4NTAwNiwiaWF0IjoxNzA2MTg0MTA2LCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.5J6eeglv243_NwUXFHktfaqZRuo4uXG660XGicE6WuM";
 
     @Test
-    public void payout_paymentMethodList() throws Exception {
+    public void step_inquiry_status() throws Exception {
 
-        System.out.println("=====> step : Step_Inquiry_balance");
+        System.out.println("=====> step : Step_Inquiry_status");
 
         //url
         String endPointUlr = SmileConstant.INQUIRY_STATUS_API;
