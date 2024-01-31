@@ -31,7 +31,7 @@ public class SmileConstant {
      * MerchantSecret.
      * From merchant platform
      */
-    public static final String MERCHANT_SECRET = "af98fb82a9ede686867f2989ccba98a8670d4ac2b8eaf38e01071d5892f20a29";
+    public static final String MERCHANT_SECRET = "7a6927cace6bfbb731bd7fbaee2bc0818e8991a655bf19f233103bafe3e1050f";
 
     /**
      * SANDBOX URL.
