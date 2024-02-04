@@ -3,6 +3,8 @@ package smile;
 import com.google.gson.Gson;
 import id.smile.SignatureUtil;
 import id.smile.SmileConstant;
+import id.smile.data.AreaEnum;
+import id.smile.data.CurrencyEnum;
 import id.smile.req.AddressReq;
 import id.smile.req.ItemDetailReq;
 import id.smile.req.MerchantReq;
@@ -36,6 +38,8 @@ public class Step3_Payin extends BaseTest {
     public void payin() throws Exception {
         System.out.println("=====> step3 : Payin transaction");
 
+        String accessToken = Step2_AccessToken.generateAccessToken();
+
         //url
         String endPointUlr = SmileConstant.PAY_IN_API;
         String url = SmileConstant.BASE_URL + endPointUlr;
@@ -43,16 +47,17 @@ public class Step3_Payin extends BaseTest {
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
         String partnerId = SmileConstant.MERCHANT_ID;
+        BigDecimal amount = new BigDecimal("30000");
 
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
         String purpose = "Purpose For Transaction from Java SDK";
-        String paymentMethod = "BCA";
+        String paymentMethod = "CIMB";
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
-        moneyReq.setCurrency(SmileConstant.CURRENCY);
-        moneyReq.setAmount(new BigDecimal("10000"));
+        moneyReq.setCurrency(CurrencyEnum.IDR.name());
+        moneyReq.setAmount(amount);
 
         //merchantReq
         MerchantReq merchantReq = new MerchantReq();
@@ -80,7 +85,7 @@ public class Step3_Payin extends BaseTest {
         ItemDetailReq itemDetailReq = new ItemDetailReq();
         itemDetailReq.setName("mac A1");
         itemDetailReq.setQuantity(1);
-        itemDetailReq.setPrice(new BigDecimal("10000"));
+        itemDetailReq.setPrice(amount);
 
         //billingAddress
         AddressReq billingAddress = new AddressReq();
@@ -115,6 +120,7 @@ public class Step3_Payin extends BaseTest {
         payinReq.setPayer(payerReq);
         payinReq.setReceiver(receiverReq);
         payinReq.setExpiryPeriod(null);
+        //payinReq.setArea(AreaEnum.INDONESIA.getCode());
 
         //jsonStr by gson
         Gson gson = new Gson();
@@ -135,7 +141,7 @@ public class Step3_Payin extends BaseTest {
         String lowerCase = byte2Hex.toLowerCase();
 
         //build
-        String stringToSign = "POST" + ":" + endPointUlr + ":" + ACCESS_TOKEN + ":" + lowerCase + ":" + timestamp;
+        String stringToSign = "POST" + ":" + endPointUlr + ":" + accessToken + ":" + lowerCase + ":" + timestamp;
 
         //signature
         String signature = SignatureUtil.hmacSHA512(stringToSign, SmileConstant.MERCHANT_SECRET);
@@ -145,7 +151,7 @@ public class Step3_Payin extends BaseTest {
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader("Content-Type", "application/json");
-        httpPost.addHeader("Authorization", "Bearer " + ACCESS_TOKEN);
+        httpPost.addHeader("Authorization", "Bearer " + accessToken);
         httpPost.addHeader("X-TIMESTAMP", timestamp);
         httpPost.addHeader("X-SIGNATURE", signature);
 

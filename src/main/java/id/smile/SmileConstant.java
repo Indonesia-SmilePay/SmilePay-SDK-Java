@@ -25,25 +25,25 @@ public class SmileConstant {
      * merchantID.
      * From merchant platform
      */
-    public static final String MERCHANT_ID = "10001";
+    public static final String MERCHANT_ID = "20014";
 
     /**
      * MerchantSecret.
      * From merchant platform
      */
-    public static final String MERCHANT_SECRET = "7a6927cace6bfbb731bd7fbaee2bc0818e8991a655bf19f233103bafe3e1050f";
+    public static final String MERCHANT_SECRET = "8f80428b0615f636f6b4f670d96f2e494d67e6b9de9f1a233f742719ddee5b08";
 
     /**
      * SANDBOX URL.
      * From docs API
      */
-    public static final String BASE_SANDBOX_URL = "https://sandbox-gateway.smilepay.id";
+    public static final String BASE_SANDBOX_URL = "https://sandbox-gateway-test.thesmilepay.com";
 
     /**
      * PRODUCTION URL. From docs API. <br>
      * If you pass the sandbox docking, you can switch the URL to production.
      */
-    public static final String BASE_URL = "https://gateway.smilepay.id";
+    public static final String BASE_URL = "https://gateway-test.thesmilepay.com";
 
     /**
      * AccessToken_API.
@@ -60,8 +60,10 @@ public class SmileConstant {
     /**
      * Payout_API.
      * From docs API
+     * Both are valid
      */
-    public static final String PAY_OUT_API = "/v1.0/disbursement/cash-out";
+    public static final String CASH_OUT_API = "/v1.0/disbursement/cash-out";
+    public static final String PAY_OUT_API = "/v1.0/disbursement/pay-out";
 
     /**
      * PAY_OUT_INQUIRY_PAYMENT_METHOD_API.

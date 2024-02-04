@@ -3,6 +3,7 @@ package smile;
 import com.google.gson.Gson;
 import id.smile.SignatureUtil;
 import id.smile.SmileConstant;
+import id.smile.data.AreaEnum;
 import id.smile.req.AddressReq;
 import id.smile.req.ItemDetailReq;
 import id.smile.req.MerchantReq;
@@ -34,6 +35,8 @@ public class Step6_Payout extends BaseTest {
     public void step6_payout() throws Exception {
         System.out.println("=====> step6 : Payout Disbursement");
 
+        String accessToken = Step2_AccessToken.generateAccessToken();
+
         //url
         String endPointUlr = SmileConstant.PAY_OUT_API;
         String url = SmileConstant.BASE_URL + endPointUlr;
@@ -41,6 +44,7 @@ public class Step6_Payout extends BaseTest {
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
         String partnerId = SmileConstant.MERCHANT_ID;
+        BigDecimal amount = new BigDecimal("10000");
 
         //generate parameter
         String merchantOrderNo = "D_" + System.currentTimeMillis();
@@ -50,7 +54,7 @@ public class Step6_Payout extends BaseTest {
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
         moneyReq.setCurrency(SmileConstant.CURRENCY);
-        moneyReq.setAmount(new BigDecimal("100000"));
+        moneyReq.setAmount(amount);
 
         //merchantReq
         MerchantReq merchantReq = new MerchantReq();
@@ -78,7 +82,7 @@ public class Step6_Payout extends BaseTest {
         ItemDetailReq itemDetailReq = new ItemDetailReq();
         itemDetailReq.setName("mac A1");
         itemDetailReq.setQuantity(1);
-        itemDetailReq.setPrice(new BigDecimal("100000"));
+        itemDetailReq.setPrice(amount);
 
         //billingAddress
         AddressReq billingAddress = new AddressReq();
@@ -110,9 +114,10 @@ public class Step6_Payout extends BaseTest {
         payoutReq.setCallbackUrl(null);
         payoutReq.setRedirectUrl(null);
         payoutReq.setPaymentMethod(paymentMethod);
-        payoutReq.setCashAccount("23472432978");
+        payoutReq.setCashAccount("4070307681");
         payoutReq.setPayer(payerReq);
         payoutReq.setReceiver(receiverReq);
+        //payoutReq.setArea(AreaEnum.INDONESIA.getCode());
 
         //jsonStr by gson
         Gson gson = new Gson();
@@ -133,7 +138,7 @@ public class Step6_Payout extends BaseTest {
         String lowerCase = byte2Hex.toLowerCase();
 
         //build
-        String stringToSign = "POST" + ":" + endPointUlr + ":" + ACCESS_TOKEN + ":" + lowerCase + ":" + timestamp;
+        String stringToSign = "POST" + ":" + endPointUlr + ":" + accessToken + ":" + lowerCase + ":" + timestamp;
         System.out.println("stringToSign = " + stringToSign);
 
         //signature
@@ -144,7 +149,7 @@ public class Step6_Payout extends BaseTest {
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader("Content-Type", "application/json");
-        httpPost.addHeader("Authorization", "Bearer " + ACCESS_TOKEN);
+        httpPost.addHeader("Authorization", "Bearer " + accessToken);
         httpPost.addHeader("X-TIMESTAMP", timestamp);
         httpPost.addHeader("X-SIGNATURE", signature);
 

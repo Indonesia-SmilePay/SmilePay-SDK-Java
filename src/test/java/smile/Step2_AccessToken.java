@@ -21,8 +21,16 @@ public class Step2_AccessToken extends BaseTest {
 
     @Test
     public void accessToken() {
-        System.out.println("=====> step2 : Create Access Token");
+        System.out.println("=====> Create Access Token");
+        String accessToken = generateAccessToken();
+        System.out.println("accessToken = " + accessToken);
+    }
 
+
+    /**
+     * generateAccessToken
+     */
+    public static String generateAccessToken() {
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
         String clientKey = SmileConstant.MERCHANT_ID;
@@ -51,6 +59,8 @@ public class Step2_AccessToken extends BaseTest {
         System.out.println("res token = " + res.getAccessToken());
 
         System.out.println("Please remember the token, use this token for all subsequent api calls.");
+
+        return res.getAccessToken();
     }
 
     //response = {"responseCode":"2007300","responseMessage":"Successful","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NTA1NzAsImV4cCI6MTcwMDU1MTQ3MCwiaWF0IjoxNzAwNTUwNTcwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.LKP5DH0n0Zy2lcUICnhGgAnHRIlK68YPSF94lJ-CbtI","tokenType":"Bearer","expiresIn":"900","additionalInfo":null}
