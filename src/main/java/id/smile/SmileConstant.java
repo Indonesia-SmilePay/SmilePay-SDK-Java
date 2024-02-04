@@ -25,25 +25,25 @@ public class SmileConstant {
      * merchantID.
      * From merchant platform
      */
-    public static final String MERCHANT_ID = "20001";
+    public static final String MERCHANT_ID = "10001";
 
     /**
      * MerchantSecret.
      * From merchant platform
      */
-    public static final String MERCHANT_SECRET = "0686d0aad339977d1f0fc42885d8e165134112779eef777e7f3b246b8b37afd0";
+    public static final String MERCHANT_SECRET = "7a6927cace6bfbb731bd7fbaee2bc0818e8991a655bf19f233103bafe3e1050f";
 
     /**
      * SANDBOX URL.
      * From docs API
      */
-    public static final String BASE_SANDBOX_URL = "https://sandbox-gateway-test.thesmilepay.com";
+    public static final String BASE_SANDBOX_URL = "https://sandbox-gateway.smilepay.id";
 
     /**
      * PRODUCTION URL. From docs API. <br>
      * If you pass the sandbox docking, you can switch the URL to production.
      */
-    public static final String BASE_URL = "https://gateway-test.thesmilepay.com";
+    public static final String BASE_URL = "https://gateway.smilepay.id";
 
     /**
      * AccessToken_API.
@@ -62,6 +62,39 @@ public class SmileConstant {
      * From docs API
      */
     public static final String PAY_OUT_API = "/v1.0/disbursement/cash-out";
+
+    /**
+     * PAY_OUT_INQUIRY_PAYMENT_METHOD_API.
+     * From docs API
+     */
+    public static final String PAY_OUT_INQUIRY_PAYMENT_METHOD_API = "/v1.0/disbursement/inquiry-paymentMethod";
+
+    /**
+     * PAY_OUT_INQUIRY_ACCOUNT_API.
+     * From docs API
+     */
+    public static final String PAY_OUT_INQUIRY_ACCOUNT_API = "/v1.0/disbursement/inquiry-account";
+
+    /**
+     * INQUIRY_BALANCE_API.
+     * From docs API
+     * Both are valid
+     */
+    public static final String INQUIRY_BALANCE_API = "/v1.0/balance-inquiry";
+    public static final String INQUIRY_BALANCE_NEW_API = "/v1.0/inquiry-balance";
+
+    /**
+     * INQUIRY_STATUS_API
+     * INQUIRY_STATUS_NEW_API
+     * Both are valid
+     */
+    public static final String INQUIRY_STATUS_API = "/v1.0/inquiryStatus";
+    public static final String INQUIRY_STATUS_NEW_API = "/v1.0/inquiry-status";
+
+    /**
+     * QRIS_SC_API
+     */
+    public static final String QRIS_SC_API = "/v1.0/qris-sc";
 
 }
 

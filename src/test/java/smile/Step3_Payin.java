@@ -29,7 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDM4NDM3NjYsImV4cCI6MTcwMzg0NDY2NiwiaWF0IjoxNzAzODQzNzY2LCJNRVJDSEFOVF9JRCI6IjIwMDAxIn0.le1Uedm8Sh7XFET4OAakYKNX3o-YqhFApgtN2Vuumzo";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDY2ODkxODEsImV4cCI6MTcwNjY5MDA4MSwiaWF0IjoxNzA2Njg5MTgxLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.6E_zUs7_1oSvF-F-HkmWs4EcAOUx1hEbk6UIPnMVe8E";
 
 
     @Test
@@ -47,12 +47,12 @@ public class Step3_Payin extends BaseTest {
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
         String purpose = "Purpose For Transaction from Java SDK";
-        String paymentMethod = "W_DANA";
+        String paymentMethod = "BCA";
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
         moneyReq.setCurrency(SmileConstant.CURRENCY);
-        moneyReq.setAmount(new BigDecimal("100000"));
+        moneyReq.setAmount(new BigDecimal("10000"));
 
         //merchantReq
         MerchantReq merchantReq = new MerchantReq();
@@ -62,8 +62,8 @@ public class Step3_Payin extends BaseTest {
 
         //payerReq
         PayerReq payerReq = new PayerReq();
-        payerReq.setName("Jef-fer");
-        payerReq.setPhone("82-3473829260");
+        payerReq.setName("Jeffery");
+        payerReq.setPhone("018922990");
         payerReq.setAddress("Jalan Pantai Mutiara TG6, Pluit, Jakarta");
         payerReq.setEmail("jef.gt@gmail.com");
         payerReq.setIdentity(null);
@@ -71,7 +71,7 @@ public class Step3_Payin extends BaseTest {
         //receiverReq
         ReceiverReq receiverReq = new ReceiverReq();
         receiverReq.setName("Viva in");
-        receiverReq.setPhone("82-3473233732");
+        receiverReq.setPhone("018922990");
         receiverReq.setAddress("Jl. Pluit Karang Ayu 1 No.B1 Pluit");
         receiverReq.setEmail("Viva@mir.com");
         receiverReq.setIdentity(null);
@@ -80,14 +80,14 @@ public class Step3_Payin extends BaseTest {
         ItemDetailReq itemDetailReq = new ItemDetailReq();
         itemDetailReq.setName("mac A1");
         itemDetailReq.setQuantity(1);
-        itemDetailReq.setPrice(new BigDecimal("100000"));
+        itemDetailReq.setPrice(new BigDecimal("10000"));
 
         //billingAddress
         AddressReq billingAddress = new AddressReq();
         billingAddress.setCountryCode("Indonesia");
         billingAddress.setCity("jakarta");
         billingAddress.setAddress("Jl. Pluit Karang Ayu 1 No.B1 Pluit");
-        billingAddress.setPhone("82-3473233732");
+        billingAddress.setPhone("018922990");
         billingAddress.setPostalCode("14450");
 
         //shippingAddress
@@ -95,7 +95,7 @@ public class Step3_Payin extends BaseTest {
         shippingAddress.setCountryCode("Indonesia");
         shippingAddress.setCity("jakarta");
         shippingAddress.setAddress("Jl. Pluit Karang Ayu 1 No.B1 Pluit");
-        shippingAddress.setPhone("82-3473233732");
+        shippingAddress.setPhone("018922990");
         shippingAddress.setPostalCode("14450");
 
         //payinReq
