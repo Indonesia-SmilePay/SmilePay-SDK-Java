@@ -47,16 +47,18 @@ public class Step3_Payin extends BaseTest {
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
         String partnerId = SmileConstant.MERCHANT_ID;
-        BigDecimal amount = new BigDecimal("30000");
+        BigDecimal amount = new BigDecimal("20000");
+
+        AreaEnum areaEnum = AreaEnum.INDIA;
 
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
         String purpose = "Purpose For Transaction from Java SDK";
-        String paymentMethod = "CIMB";
+        String paymentMethod = "P2P";
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
-        moneyReq.setCurrency(CurrencyEnum.IDR.name());
+        moneyReq.setCurrency(areaEnum.getCurrency().name());
         moneyReq.setAmount(amount);
 
         //merchantReq
@@ -120,7 +122,7 @@ public class Step3_Payin extends BaseTest {
         payinReq.setPayer(payerReq);
         payinReq.setReceiver(receiverReq);
         payinReq.setExpiryPeriod(null);
-        //payinReq.setArea(AreaEnum.INDONESIA.getCode());
+        payinReq.setArea(areaEnum.getCode());
 
         //jsonStr by gson
         Gson gson = new Gson();
