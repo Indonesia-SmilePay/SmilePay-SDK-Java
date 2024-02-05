@@ -29,7 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDY2ODkxODEsImV4cCI6MTcwNjY5MDA4MSwiaWF0IjoxNzA2Njg5MTgxLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.6E_zUs7_1oSvF-F-HkmWs4EcAOUx1hEbk6UIPnMVe8E";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDcxMTI3NzIsImV4cCI6MTcwNzExMzY3MiwiaWF0IjoxNzA3MTEyNzcyLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.Lbq5XbpEaJdG691R8jYI1uf-LKuLmnwcjBMUqMFjvBw";
 
 
     @Test
@@ -115,6 +115,7 @@ public class Step3_Payin extends BaseTest {
         payinReq.setPayer(payerReq);
         payinReq.setReceiver(receiverReq);
         payinReq.setExpiryPeriod(null);
+        payinReq.setFeeMethod("Excluded");
 
         //jsonStr by gson
         Gson gson = new Gson();

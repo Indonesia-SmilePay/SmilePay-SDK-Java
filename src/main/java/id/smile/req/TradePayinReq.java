@@ -23,6 +23,11 @@ public class TradePayinReq extends TradeReq {
      */
     private Integer expiryPeriod;
 
+    /**
+     * 计算支付金额 Included/Excluded. 默认 Included
+     */
+    private String feeMethod;
+
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -53,5 +58,13 @@ public class TradePayinReq extends TradeReq {
 
     public void setExpiryPeriod(Integer expiryPeriod) {
         this.expiryPeriod = expiryPeriod;
+    }
+
+    public String getFeeMethod() {
+        return feeMethod;
+    }
+
+    public void setFeeMethod(String feeMethod) {
+        this.feeMethod = feeMethod;
     }
 }
