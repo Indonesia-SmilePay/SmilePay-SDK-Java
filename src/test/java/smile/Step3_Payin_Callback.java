@@ -20,7 +20,7 @@ public class Step3_Payin_Callback extends BaseTest {
     @Test
     public void payinCallback() throws Exception {
         System.out.println("=====> Step3_Payin_Callback");
-        callback("10120014240204160138633");
+        callback("12120014240205131332350");
     }
 
     public static void callback(String tradeNo) throws IOException {

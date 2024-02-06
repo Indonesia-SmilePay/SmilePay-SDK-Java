@@ -10,6 +10,7 @@ import id.smile.req.MerchantReq;
 import id.smile.req.MoneyReq;
 import id.smile.req.PayerReq;
 import id.smile.req.ReceiverReq;
+import id.smile.req.TradeAdditionalReq;
 import id.smile.req.TradePayoutReq;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -46,14 +47,16 @@ public class Step6_Payout extends BaseTest {
         String partnerId = SmileConstant.MERCHANT_ID;
         BigDecimal amount = new BigDecimal("10000");
 
+        AreaEnum areaEnum = AreaEnum.INDIA;
+
         //generate parameter
         String merchantOrderNo = "D_" + System.currentTimeMillis();
         String purpose = "Purpose For Disbursement from Java SDK";
-        String paymentMethod = "BCA";
+        String paymentMethod = "YES";
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
-        moneyReq.setCurrency(SmileConstant.CURRENCY);
+        moneyReq.setCurrency(areaEnum.getCurrency().name());
         moneyReq.setAmount(amount);
 
         //merchantReq
@@ -100,12 +103,18 @@ public class Step6_Payout extends BaseTest {
         shippingAddress.setPhone("82-3473233732");
         shippingAddress.setPostalCode("14450");
 
+        //TradeAdditionalReq
+        TradeAdditionalReq additionalReq = new TradeAdditionalReq();
+        additionalReq.setIfscCode("YESB0000097");
+        Gson gson = new Gson();
+        String additionalParam = gson.toJson(additionalReq);
+
         //payoutReq
         TradePayoutReq payoutReq = new TradePayoutReq();
         payoutReq.setOrderNo(merchantOrderNo);
         payoutReq.setPurpose(purpose);
         payoutReq.setProductDetail("Product details");
-        payoutReq.setAdditionalParam("other descriptions");
+        payoutReq.setAdditionalParam(additionalParam);
         payoutReq.setItemDetailList(Collections.singletonList(itemDetailReq));
         payoutReq.setBillingAddress(billingAddress);
         payoutReq.setShippingAddress(shippingAddress);
@@ -117,10 +126,9 @@ public class Step6_Payout extends BaseTest {
         payoutReq.setCashAccount("4070307681");
         payoutReq.setPayer(payerReq);
         payoutReq.setReceiver(receiverReq);
-        //payoutReq.setArea(AreaEnum.INDONESIA.getCode());
+        payoutReq.setArea(areaEnum.getCode());
 
         //jsonStr by gson
-        Gson gson = new Gson();
         String jsonStr = gson.toJson(payoutReq);
         System.out.println("jsonStr = " + jsonStr);
 
