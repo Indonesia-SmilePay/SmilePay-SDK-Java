@@ -29,7 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDcxMTI3NzIsImV4cCI6MTcwNzExMzY3MiwiaWF0IjoxNzA3MTEyNzcyLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.Lbq5XbpEaJdG691R8jYI1uf-LKuLmnwcjBMUqMFjvBw";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDg0MTE4MDgsImV4cCI6MTcwODQxMjcwOCwiaWF0IjoxNzA4NDExODA4LCJNRVJDSEFOVF9JRCI6IjEwMDIyIn0.q6q7aIPSb6m-julV496uEdwypZGNBj8sbOj3uCD5HjI";
 
 
     @Test
@@ -47,18 +47,17 @@ public class Step3_Payin extends BaseTest {
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
         String purpose = "Purpose For Transaction from Java SDK";
-        String paymentMethod = "BCA";
+        String paymentMethod = "QRIS";
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
         moneyReq.setCurrency(SmileConstant.CURRENCY);
-        moneyReq.setAmount(new BigDecimal("10000"));
+        moneyReq.setAmount(new BigDecimal("20000"));
 
         //merchantReq
         MerchantReq merchantReq = new MerchantReq();
         merchantReq.setMerchantId(partnerId);
         merchantReq.setMerchantName(null);
-        merchantReq.setAccountNo(null);
 
         //payerReq
         PayerReq payerReq = new PayerReq();
@@ -115,7 +114,7 @@ public class Step3_Payin extends BaseTest {
         payinReq.setPayer(payerReq);
         payinReq.setReceiver(receiverReq);
         payinReq.setExpiryPeriod(null);
-        payinReq.setFeeMethod("Excluded");
+        //payinReq.setFeeMethod("Excluded");
 
         //jsonStr by gson
         Gson gson = new Gson();

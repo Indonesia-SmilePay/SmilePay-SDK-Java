@@ -28,7 +28,7 @@ import java.util.Collections;
 public class Step6_Payout extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDEwNjQyMTksImV4cCI6MTcwMTA2NTExOSwiaWF0IjoxNzAxMDY0MjE5LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDEifQ.D4XIdXPFeM0JKPtrfv7SufdLpKvxZl4eWQKgqzjIkxA";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDgyNDA1MzIsImV4cCI6MTcwODI0MTQzMiwiaWF0IjoxNzA4MjQwNTMyLCJNRVJDSEFOVF9JRCI6IjEwMDIyIn0.8XmdngwZoun06L2bfjZeoG6jNCm_zuvLUNq1U9HtZKw";
 
     @Test
     public void step6_payout() throws Exception {
@@ -36,7 +36,7 @@ public class Step6_Payout extends BaseTest {
 
         //url
         String endPointUlr = SmileConstant.PAY_OUT_API;
-        String url = SmileConstant.BASE_SANDBOX_URL + endPointUlr;
+        String url = SmileConstant.BASE_URL + endPointUlr;
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
@@ -50,13 +50,12 @@ public class Step6_Payout extends BaseTest {
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
         moneyReq.setCurrency(SmileConstant.CURRENCY);
-        moneyReq.setAmount(new BigDecimal("100000"));
+        moneyReq.setAmount(new BigDecimal("10000"));
 
         //merchantReq
         MerchantReq merchantReq = new MerchantReq();
         merchantReq.setMerchantId(partnerId);
         merchantReq.setMerchantName(null);
-        merchantReq.setAccountNo(null);
 
         //payerReq
         PayerReq payerReq = new PayerReq();

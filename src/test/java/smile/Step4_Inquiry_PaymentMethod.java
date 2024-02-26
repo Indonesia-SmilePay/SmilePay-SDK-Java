@@ -21,10 +21,10 @@ import java.time.ZonedDateTime;
 public class Step4_Inquiry_PaymentMethod extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYxNzg3OTAsImV4cCI6MTcwNjE3OTY5MCwiaWF0IjoxNzA2MTc4NzkwLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.SN68fFTnPrOv4IVQc_zWmC7bO1OITc8HRhkQC0_1x2A";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDgyMzkzODIsImV4cCI6MTcwODI0MDI4MiwiaWF0IjoxNzA4MjM5MzgyLCJNRVJDSEFOVF9JRCI6IjEwMDIyIn0.R9dqvCq2-v8LtL89Nleex4N4Yl7_BFoWr-QhtXlinhE";
 
     @Test
-    public void step4_inquiry_paymentmethod() throws Exception {
+    public void step4_inquiry_paymentMethod() throws Exception {
 
         System.out.println("=====> step4 : Payout Step4_Inquiry_PaymentMethod");
 

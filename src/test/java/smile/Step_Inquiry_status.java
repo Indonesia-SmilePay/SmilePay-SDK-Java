@@ -22,7 +22,15 @@ import java.util.Collections;
 public class Step_Inquiry_status extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYxODQxMDYsImV4cCI6MTcwNjE4NTAwNiwiaWF0IjoxNzA2MTg0MTA2LCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.5J6eeglv243_NwUXFHktfaqZRuo4uXG660XGicE6WuM";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDcyODY0NzMsImV4cCI6MTcwNzI4NzM3MywiaWF0IjoxNzA3Mjg2NDczLCJNRVJDSEFOVF9JRCI6IjEwMDIyIn0.TePnk2_zmxIFfets16gIaE6RH3FYPz6LbKlZNiEEU5A";
+
+    @Test
+    public void step_inquiry_status_2() throws Exception {
+        for (int i = 0; i < 3; i++) {
+            step_inquiry_status();
+        }
+    }
+
 
     @Test
     public void step_inquiry_status() throws Exception {
@@ -30,7 +38,7 @@ public class Step_Inquiry_status extends BaseTest {
         System.out.println("=====> step : Step_Inquiry_status");
 
         //url
-        String endPointUlr = SmileConstant.INQUIRY_STATUS_API;
+        String endPointUlr = SmileConstant.INQUIRY_STATUS_NEW_API;
         String url = SmileConstant.BASE_URL + endPointUlr;
 
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);

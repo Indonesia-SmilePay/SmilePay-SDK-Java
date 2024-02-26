@@ -24,7 +24,7 @@ import java.util.Collections;
 public class Step_Inquiry_balance extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDYxODMxNDEsImV4cCI6MTcwNjE4NDA0MSwiaWF0IjoxNzA2MTgzMTQxLCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.6hyHi8xBPI0t-onFBJIWmJCkfbhnkqaQTxLa-H3jJyI";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDgyNDA1MzIsImV4cCI6MTcwODI0MTQzMiwiaWF0IjoxNzA4MjQwNTMyLCJNRVJDSEFOVF9JRCI6IjEwMDIyIn0.8XmdngwZoun06L2bfjZeoG6jNCm_zuvLUNq1U9HtZKw";
 
     @Test
     public void step_inquiry_balance() throws Exception {

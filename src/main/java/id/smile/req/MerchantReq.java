@@ -13,10 +13,6 @@ public class MerchantReq {
      */
     private String merchantName;
 
-    /**
-     * SmilePay accountNo
-     */
-    private String accountNo;
 
     public String getMerchantId() {
         return merchantId;
@@ -34,11 +30,4 @@ public class MerchantReq {
         this.merchantName = merchantName;
     }
 
-    public String getAccountNo() {
-        return accountNo;
-    }
-
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
-    }
 }

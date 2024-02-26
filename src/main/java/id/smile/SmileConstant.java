@@ -25,13 +25,13 @@ public class SmileConstant {
      * merchantID.
      * From merchant platform
      */
-    public static final String MERCHANT_ID = "10001";
+    public static final String MERCHANT_ID = "10022";
 
     /**
      * MerchantSecret.
      * From merchant platform
      */
-    public static final String MERCHANT_SECRET = "7a6927cace6bfbb731bd7fbaee2bc0818e8991a655bf19f233103bafe3e1050f";
+    public static final String MERCHANT_SECRET = "920d4e23f371d263b38819cacf8302975ec0012061e75fa8fabf2155b2a01a8e";
 
     /**
      * SANDBOX URL.
@@ -43,7 +43,7 @@ public class SmileConstant {
      * PRODUCTION URL. From docs API. <br>
      * If you pass the sandbox docking, you can switch the URL to production.
      */
-    public static final String BASE_URL = "https://gateway.smilepay.id";
+    public static final String BASE_URL = "https://gateway-test.smilepay.id";
 
     /**
      * AccessToken_API.
