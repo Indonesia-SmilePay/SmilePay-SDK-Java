@@ -45,14 +45,18 @@ public class Step6_Payout extends BaseTest {
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
         String partnerId = SmileConstant.MERCHANT_ID;
-        BigDecimal amount = new BigDecimal("10000");
+        BigDecimal amount = new BigDecimal("20");
 
-        AreaEnum areaEnum = AreaEnum.INDIA;
+        AreaEnum areaEnum = AreaEnum.THAILAND;
 
         //generate parameter
         String merchantOrderNo = "D_" + System.currentTimeMillis();
         String purpose = "Purpose For Disbursement from Java SDK";
-        String paymentMethod = "YES";
+
+//        String paymentMethod = "BCA"; //Ind
+//        String paymentMethod = "YES"; //India
+//        String paymentMethod = "CPF"; //Brazil
+        String paymentMethod = "KBANK"; //Tan land
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
@@ -89,7 +93,7 @@ public class Step6_Payout extends BaseTest {
 
         //billingAddress
         AddressReq billingAddress = new AddressReq();
-        billingAddress.setCountryCode("Indonesia");
+        billingAddress.setCountryCode(areaEnum.name());
         billingAddress.setCity("jakarta");
         billingAddress.setAddress("Jl. Pluit Karang Ayu 1 No.B1 Pluit");
         billingAddress.setPhone("82-3473233732");
@@ -97,7 +101,7 @@ public class Step6_Payout extends BaseTest {
 
         //shippingAddress
         AddressReq shippingAddress = new AddressReq();
-        shippingAddress.setCountryCode("Indonesia");
+        shippingAddress.setCountryCode(areaEnum.name());
         shippingAddress.setCity("jakarta");
         shippingAddress.setAddress("Jl. Pluit Karang Ayu 1 No.B1 Pluit");
         shippingAddress.setPhone("82-3473233732");
@@ -105,16 +109,15 @@ public class Step6_Payout extends BaseTest {
 
         //TradeAdditionalReq
         TradeAdditionalReq additionalReq = new TradeAdditionalReq();
-        additionalReq.setIfscCode("YESB0000097");
-        Gson gson = new Gson();
-        String additionalParam = gson.toJson(additionalReq);
+        additionalReq.setIfscCode("YESB0000097"); //India
+        additionalReq.setTaxNumber("22332424242342"); //Brazil
 
         //payoutReq
         TradePayoutReq payoutReq = new TradePayoutReq();
         payoutReq.setOrderNo(merchantOrderNo);
         payoutReq.setPurpose(purpose);
         payoutReq.setProductDetail("Product details");
-        payoutReq.setAdditionalParam(additionalParam);
+        payoutReq.setAdditionalParam(additionalReq);
         payoutReq.setItemDetailList(Collections.singletonList(itemDetailReq));
         payoutReq.setBillingAddress(billingAddress);
         payoutReq.setShippingAddress(shippingAddress);
@@ -123,12 +126,13 @@ public class Step6_Payout extends BaseTest {
         payoutReq.setCallbackUrl(null);
         payoutReq.setRedirectUrl(null);
         payoutReq.setPaymentMethod(paymentMethod);
-        payoutReq.setCashAccount("4070307681");
+        payoutReq.setCashAccount("40703076811");
         payoutReq.setPayer(payerReq);
         payoutReq.setReceiver(receiverReq);
         payoutReq.setArea(areaEnum.getCode());
 
         //jsonStr by gson
+        Gson gson = new Gson();
         String jsonStr = gson.toJson(payoutReq);
         System.out.println("jsonStr = " + jsonStr);
 

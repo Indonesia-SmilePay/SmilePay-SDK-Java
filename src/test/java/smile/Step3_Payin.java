@@ -11,6 +11,7 @@ import id.smile.req.MerchantReq;
 import id.smile.req.MoneyReq;
 import id.smile.req.PayerReq;
 import id.smile.req.ReceiverReq;
+import id.smile.req.TradeAdditionalReq;
 import id.smile.req.TradePayinReq;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -47,14 +48,17 @@ public class Step3_Payin extends BaseTest {
         String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
         System.out.println("timestamp = " + timestamp);
         String partnerId = SmileConstant.MERCHANT_ID;
-        BigDecimal amount = new BigDecimal("20000");
+        BigDecimal amount = new BigDecimal("250");
 
-        AreaEnum areaEnum = AreaEnum.INDIA;
+        AreaEnum areaEnum = AreaEnum.THAILAND;
 
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
         String purpose = "Purpose For Transaction from Java SDK";
-        String paymentMethod = "P2P";
+        //String paymentMethod = "MAYBANK";
+        //String paymentMethod = "I_CASHIER";
+        String paymentMethod = "BANK"; //泰国
+
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
@@ -91,7 +95,7 @@ public class Step3_Payin extends BaseTest {
 
         //billingAddress
         AddressReq billingAddress = new AddressReq();
-        billingAddress.setCountryCode("Indonesia");
+        billingAddress.setCountryCode(areaEnum.name());
         billingAddress.setCity("jakarta");
         billingAddress.setAddress("Jl. Pluit Karang Ayu 1 No.B1 Pluit");
         billingAddress.setPhone("018922990");
@@ -99,18 +103,23 @@ public class Step3_Payin extends BaseTest {
 
         //shippingAddress
         AddressReq shippingAddress = new AddressReq();
-        shippingAddress.setCountryCode("Indonesia");
+        shippingAddress.setCountryCode(areaEnum.name());
         shippingAddress.setCity("jakarta");
         shippingAddress.setAddress("Jl. Pluit Karang Ayu 1 No.B1 Pluit");
         shippingAddress.setPhone("018922990");
         shippingAddress.setPostalCode("14450");
+
+        //TradeAdditionalReq
+        TradeAdditionalReq additionalReq = new TradeAdditionalReq();
+        //additionalReq.setIfscCode("");
+        additionalReq.setPayerAccountNo("34324234234234");
 
         //payinReq
         TradePayinReq payinReq = new TradePayinReq();
         payinReq.setOrderNo(merchantOrderNo);
         payinReq.setPurpose(purpose);
         payinReq.setProductDetail("Product details");
-        payinReq.setAdditionalParam("other descriptions");
+        payinReq.setAdditionalParam(additionalReq);
         payinReq.setItemDetailList(Collections.singletonList(itemDetailReq));
         payinReq.setBillingAddress(billingAddress);
         payinReq.setShippingAddress(shippingAddress);

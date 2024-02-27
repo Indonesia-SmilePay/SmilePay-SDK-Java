@@ -23,7 +23,7 @@ public class TradeReq {
     /**
      * Add extension information: in addition to the purpose, other descriptions
      */
-    private String additionalParam;
+    private TradeAdditionalReq additionalParam;
 
     /**
      * Transaction details
@@ -93,11 +93,11 @@ public class TradeReq {
         this.productDetail = productDetail;
     }
 
-    public String getAdditionalParam() {
+    public TradeAdditionalReq getAdditionalParam() {
         return additionalParam;
     }
 
-    public void setAdditionalParam(String additionalParam) {
+    public void setAdditionalParam(TradeAdditionalReq additionalParam) {
         this.additionalParam = additionalParam;
     }
 

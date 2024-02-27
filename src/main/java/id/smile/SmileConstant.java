@@ -25,13 +25,13 @@ public class SmileConstant {
      * merchantID.
      * From merchant platform
      */
-    public static final String MERCHANT_ID = "20014";
+    public static final String MERCHANT_ID = "20018";
 
     /**
      * MerchantSecret.
      * From merchant platform
      */
-    public static final String MERCHANT_SECRET = "8f80428b0615f636f6b4f670d96f2e494d67e6b9de9f1a233f742719ddee5b08";
+    public static final String MERCHANT_SECRET = "72a065dda1989e0ca1c6489d933e33c464c932862db788ced032bbf5994a6bc1";
 
     /**
      * SANDBOX URL.
